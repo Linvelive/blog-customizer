@@ -73,12 +73,12 @@
 	cursor: pointer;
 }
 
-.option[aria-selected='true'] {
-	background-color: rgb(0 0 0 / 5%);
+.option:hover {
+	background: #eeeeee;
 }
 
-.option:hover {
-	background: var(--grey, #c4c4c4);
+.option:active {
+	background-color: #d7d7d7;
 }
 
 @mixin option-color-before {
