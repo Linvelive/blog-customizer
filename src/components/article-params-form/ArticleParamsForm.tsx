@@ -1,8 +1,9 @@
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
+import { useOutsideClickClose } from 'src/ui/select/hooks/useOutsideClickClose';
 
 import styles from './ArticleParamsForm.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Select } from 'src/ui/select';
 import {
 	fontFamilyOptions,
@@ -35,10 +36,18 @@ export const ArticleParamsForm = ({
 
 	// local state of form
 	const [tempState, setTempState] = useState(articleState);
+	const sidebarRef = useRef<HTMLElement>(null);
 
 	useEffect(() => {
 		setTempState(articleState);
 	}, [articleState]);
+
+	useOutsideClickClose({
+		isOpen,
+		rootRef: sidebarRef,
+		onClose: () => {},
+		onChange: setIsOpen,
+	});
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -62,6 +71,7 @@ export const ArticleParamsForm = ({
 			/>
 
 			<aside
+				ref={sidebarRef}
 				className={clsx(styles.container, { [styles.container_open]: isOpen })}
 				onClick={(e) => e.stopPropagation}>
 				<form

@@ -57,7 +57,7 @@
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	background-color: rgb(255 255 255 / 100%);
+	background-color: var(--bg-color, #ffffff);
 	border-top: none;
 	outline: 3px solid #000000;
 }
@@ -68,7 +68,7 @@
 	align-items: center;
 	height: 30px;
 	padding: 15px 17px;
-	background-color: rgb(255 255 255 / 100%);
+	background-color: var(--bg-color, #ffffff);
 	border: 1px;
 	cursor: pointer;
 }
