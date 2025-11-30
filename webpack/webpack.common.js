@@ -2,6 +2,7 @@ const HTMLWebpackPlugins = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path'); //для того чтобы превратить отнсительный путь в абсолютный мы будем использовать пакет path
+const sass = require('sass');
 const webpack = require('webpack');
 
 const production = process.env.NODE_ENV === 'production';
@@ -67,7 +68,12 @@ module.exports = {
 					{
 						loader: 'sass-loader',
 						options: {
+							implementation: sass,
 							sourceMap: true,
+							sassOptions: {
+								quietDeps: true,
+								silenceDeprecations: ['legacy-js-api'],
+							},
 						},
 					},
 				],
